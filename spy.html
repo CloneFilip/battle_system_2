@@ -1,11 +1,123 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Spy Action</title>
+    <style>
+        body {
+            font-family: Calibri;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .input-list {
+            flex: 1;
+            padding: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 10%;
+            padding: 1px;
+        }
+
+        .buttons-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
 </head>
+
 <body>
 
+    <div class="buttons-container">
+        <button onclick="redirectTo('index.html')">Map</button>
+        <button onclick="redirectTo('land.html')">Land Battle</button>
+        <button onclick="redirectTo('naval.html')">Naval Battle</button>
+        <button onclick="redirectTo('spy.html')">Spy Action</button>
+    </div>
+
+    <div class="container">
+
+        <div class="input-list">
+            <h2> Inputs </h2>
+            <form>
+                <h3> Number of Infiltrating Spies </h3>
+                <input type="number" name="1amount" id="1amount" value="0" />
+                <br />
+                <h3> Infiltrating Spies Quality </h3>
+                <input type="number" name="1quality" id="1quality" value="0" />
+                <br> <br>
+                Task Difficulty <input type="range" id="difficulty" name="difficulty" min="1" max="3" value="1" oninput="this.nextElementSibling.value = this.value"> <output>1</output>
+                <br>
+                <h3> Number of Counter Spies </h3>
+                <input type="number" name="2amount" id="2amount" value="0" />
+                <br>
+                <h3> Counter Spies Quality </h3>
+                <input type="number" name="2quality" id="2quality" value="0" />
+                <br>
+            </form>
+            <button onclick="handleSubmit()">Submit</button> <br />
+            <div id="results"> </div>
+        </div>
+
+    </div>
+    
+    <script>
+        function redirectTo(page) {
+            window.location.href = page;
+        }
+
+        function randomIntFromInterval(min, max) { // min and max included 
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
+        function handleSubmit() {
+
+            amount1 = document.getElementById('1amount').value;
+            quality1 = document.getElementById('1quality').value;
+            amount2 = document.getElementById('2amount').value; if (amount2 == 0) { amount2 = 1 }
+            quality2 = document.getElementById('2quality').value;
+            difficulty = document.getElementById('difficulty').value;
+            roll = randomIntFromInterval(1, 20);
+            
+            numberAdvantage = Math.max(0.75, Math.min(1.25, amount1 / (amount2 * 2)));
+            
+            rollMod = roll * quality1 / quality2 * numberAdvantage;
+            if (difficulty == 1) {
+                tresholds = [14, 10, 4, 0];
+            }
+            if (difficulty == 2) {
+                tresholds = [16, 12.5, 8, 0];
+            }
+            if (difficulty == 3) {
+                tresholds = [18, 15, 12, 0];
+            }
+
+            if (rollMod > tresholds[3]) { result = "Major Failure"; loses = 0.5 }
+            if (rollMod > tresholds[2]) { result = "Minor Failure"; loses = 0.25 }
+            if (rollMod > tresholds[1]) { result = "Mild Success"; loses = 0.1 }
+            if (rollMod > tresholds[0]) { result = "Major Success"; loses = 0 }
+
+            loses = amount1 * loses;
+            loses = Math.ceil(loses);
+
+            document.getElementById("results").innerHTML = "Roll: " + roll + "<br> Roll after modifiers: " + rollMod + " <br> Result: "+result+" <br> -"+loses+" Spies (infiltrator)";
+        }
+    </script>
+
 </body>
+
 </html>
