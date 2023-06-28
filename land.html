@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Defender and Attacker Inputs</title>
+    <style>
+        body{
+            font-family: Calibri;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .input-list {
+            flex: 1;
+            padding: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 10%;
+            padding: 1px;
+        }
+
+        .buttons-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="buttons-container">
+        <button onclick="redirectTo('index.html')">Map</button>
+        <button onclick="redirectTo('land.html')">Land Battle</button>
+        <button onclick="redirectTo('naval.html')">Naval Battle</button>
+        <button onclick="redirectTo('spy.html')">Spy Action</button>
+    </div>
+
+    <h1>Defender and Attacker Inputs</h1>
+    <div class="container">
+        <div class="input-list">
+            <h2>Side 1 Inputs</h2>
+            <form>
+                <h3> Unit Type </h3>
+                <input type="radio" name="1unit" value="Levies"> Levies
+                <br>
+                <input type="radio" name="1unit" value="Militia"> Militia
+                <br>
+                <input type="radio" name="1unit" value="LightInfantry"> Light Infantry
+                <br>
+                <input type="radio" name="1unit" value="HeavyInfantry"> Heavy Infantry
+                <br>
+                <input type="radio" name="1unit" value="EliteInfantry"> Elite Infantry
+                <br>
+                <input type="radio" name="1unit" value="Archers"> Archers
+                <br>
+                <input type="radio" name="1unit" value="Crossbowmen"> Crossbowmen
+                <br>
+                <input type="radio" name="1unit" value="HandCannoneers"> Hand Cannoneers
+                <br>
+                <input type="radio" name="1unit" value="Musketeers"> Musketeers
+                <br>
+                <input type="radio" name="1unit" value="MusketMilitia"> Musket Militia
+                <br>
+                <input type="radio" name="1unit" value="Riflemen"> Riflemen
+                <br>
+                <input type="radio" name="1unit" value="LightCavalry"> Light Cavalry
+                <br>
+                <input type="radio" name="1unit" value="HeavyCavalry"> Heavy Cavalry
+                <br>
+                <input type="radio" name="1unit" value="EliteCavalry"> Elite Cavalry
+                <br>
+                <input type="radio" name="1unit" value="RegimentalGuns"> Regimental Guns
+                <br>
+                <input type="radio" name="1unit" value="FieldCannons"> Field Cannons
+                <br>
+                <input type="radio" name="1unit" value="SiegeGuns"> Siege Guns
+                <br>
+
+                <h3> Unit Amount </h3>
+                <input type="number" name="1amount" id="1amount" />
+                <br>
+
+                <h3> Unit Type Quality </h3>
+                <input type="number" name="1quality" id="1quality" />
+                <br>
+
+                <h3> Discipline </h3>
+                <input type="number" name="1discipline" id="1discipline" />
+                <br>
+
+                <h3> Other Modifiers </h3>
+                Defences <input type="range" id="1defences" name="1Defences" min="0" max="4" value="0" oninput="this.nextElementSibling.value = this.value"> <output>0</output> <br>
+                GM Boost <input type="range" id="1gm" name="1GM" min="0" max="10" value="0" oninput="this.nextElementSibling.value = this.value * 10"> <output>0</output>% <br>
+                <input type="checkbox" id="1cavcharge" name="1cavcharge" value="1"> Cavalry Charge <br>
+                <input type="checkbox" id="1bayonets" name="1Bayonets" value="1"> Bayonets <br>
+                <input type="checkbox" id="1flank" name="1flank" value="1"> Flanking Attack <br>
+                <input type="checkbox" id="1behind" name="1behind" value="1"> Attack From Behind <br>
+                <input type="checkbox" id="1river" name="1river" value="1"> Crossing River <br>
+
+            </form>
+        </div>
+
+        <div class="input-list">
+            <h2>Side 2 Inputs</h2>
+            <form>
+                <h3> Unit Type </h3>
+                <input type="radio" name="2unit" value="Levies"> Levies
+                <br>
+                <input type="radio" name="2unit" value="Militia"> Militia
+                <br>
+                <input type="radio" name="2unit" value="LightInfantry"> Light Infantry
+                <br>
+                <input type="radio" name="2unit" value="HeavyInfantry"> Heavy Infantry
+                <br>
+                <input type="radio" name="2unit" value="EliteInfantry"> Elite Infantry
+                <br>
+                <input type="radio" name="2unit" value="Archers"> Archers
+                <br>
+                <input type="radio" name="2unit" value="Crossbowmen"> Crossbowmen
+                <br>
+                <input type="radio" name="2unit" value="HandCannoneers"> Hand Cannoneers
+                <br>
+                <input type="radio" name="2unit" value="Musketeers"> Musketeers
+                <br>
+                <input type="radio" name="2unit" value="MusketMilitia"> Musket Militia
+                <br>
+                <input type="radio" name="2unit" value="Riflemen"> Riflemen
+                <br>
+                <input type="radio" name="2unit" value="LightCavalry"> Light Cavalry
+                <br>
+                <input type="radio" name="2unit" value="HeavyCavalry"> Heavy Cavalry
+                <br>
+                <input type="radio" name="2unit" value="EliteCavalry"> Elite Cavalry
+                <br>
+                <input type="radio" name="2unit" value="RegimentalGuns"> Regimental Guns
+                <br>
+                <input type="radio" name="2unit" value="FieldCannons"> Field Cannons
+                <br>
+                <input type="radio" name="2unit" value="SiegeGuns"> Siege Guns
+                <br>
+
+                <h3> Unit Amount </h3>
+                <input type="number" name="2amount" id="2amount" />
+                <br>
+
+                <h3> Unit Type Quality </h3>
+                <input type="number" name="2quality" id="2quality" />
+                <br>
+
+                <h3> Discipline </h3>
+                <input type="number" name="2discipline" id="2discipline" />
+                <br>
+
+                <h3> Other Modifiers </h3>
+                Defences <input type="range" id="2defences" name="2Defences" min="0" max="4" value="0" oninput="this.nextElementSibling.value = this.value"> <output>0</output> <br>
+                GM Boost <input type="range" id="2gm" name="2GM" min="0" max="10" value="0" oninput="this.nextElementSibling.value = this.value * 10"> <output>0</output>% <br>
+                <input type="checkbox" id="2cavcharge" name="2cavcharge" value="1"> Cavalry Charge <br>
+                <input type="checkbox" id="2bayonets" name="2Bayonets" value="1"> Bayonets <br>
+                <input type="checkbox" id="2flank" name="2flank" value="1"> Flanking Attack <br>
+                <input type="checkbox" id="2behind" name="2behind" value="1"> Attack From Behind <br>
+                <input type="checkbox" id="2river" name="2river" value="1"> Crossing River <br>
+            </form>
+        </div>
+
+        <div class="input-list">
+            <h2>Results</h2>
+            <form>
+                <h3> Modifiers For Both </h3>
+                <input type="radio" name="terrain" value="plain"> Plain
+                <input type="radio" name="terrain" value="forest"> Forest
+                <input type="radio" name="terrain" value="urban"> Urban
+                <br>
+                Range: <input type="range" id="range" name="range" min="0" max="2" value="0" oninput="this.nextElementSibling.value = this.value"> <output>0</output> (0 - melee, 1 - ranged, 2 - artillery) <br>
+                Width: <input type="number" name="width" id="width"> <br>
+            </form>
+            <button onclick="handleSubmit()">Submit</button> <br />
+            If the text below doesn't change, make sure you've selected unit types and inputed amount, quality and discipline for both sides as well as terrain and width.
+            <br /> <br />
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        function redirectTo(page) {
+            window.location.href = page;
+        }
+        function handleSubmit() {
+            // Side 1 Variables
+            unit1 = document.querySelector('input[name="1unit"]:checked').value;
+            amount1 = document.getElementById('1amount').value;
+            quality1 = document.getElementById('1quality').value;
+            discipline1 = document.getElementById('1discipline').value;
+            defences1 = document.getElementById('1defences').value;
+            gm1 = document.getElementById('1gm').value;
+            cavcharge1 = document.getElementById('1cavcharge').checked;
+            bayonets1 = document.getElementById('1bayonets').checked;
+            flank1 = document.getElementById('1flank').checked;
+            behind1 = document.getElementById('1behind').checked;
+            river1 = document.getElementById('1river').checked;
+
+            if (unit1 == "Levies") { VIT1 = 0.5; DEF1 = 0.05; DAM1 = 0.5; ATK1 = 0.05; range1 = 0; type1 = "melee"; weight1 = "light" }
+            if (unit1 == "Militia") { VIT1 = 0.75; DEF1 = 0.25; DAM1 = 0.75; ATK1 = 0.25; range1 = 0; type1 = "melee"; weight1 = "light" }
+            if (unit1 == "LightInfantry") { VIT1 = 1; DEF1 = 0.5; DAM1 = 1; ATK1 = 0.5; range1 = 0; type1 = "melee"; weight1 = "light" }
+            if (unit1 == "HeavyInfantry") { VIT1 = 1; DEF1 = 0.75; DAM1 = 1.25; ATK1 = 0.75; range1 = 0; type1 = "melee"; weight1 = "medium" }
+            if (unit1 == "EliteInfantry") { VIT1 = 1.5; DEF1 = 1; DAM1 = 1.5; ATK1 = 1; range1 = 0; type1 = "melee"; weight1 = "light" }
+            if (unit1 == "Archers") { VIT1 = 1; DEF1 = 0.05; DAM1 = 1.25; ATK1 = 0.5; range1 = 1; type1 = "ranged"; weight1 = "light" }
+            if (unit1 == "Crossbowmen") { VIT1 = 1; DEF1 = 0.05; DAM1 = 1; ATK1 = 0.6; range1 = 1; type1 = "ranged"; weight1 = "light" }
+            if (unit1 == "HandCannoneers") { VIT1 = 1; DEF1 = 0.05; DAM1 = 0.25; ATK1 = 1; range1 = 1; type1 = "ranged"; weight1 = "medium" }
+            if (unit1 == "Musketeers") { VIT1 = 1; DEF1 = 0.25; DAM1 = 1; ATK1 = 1.25; range1 = 1; type1 = "gun"; weight1 = "light" }
+            if (unit1 == "MusketMilitia") { VIT1 = 0.75; DEF1 = 0.05; DAM1 = 0.75; ATK1 = 1; range1 = 1; type1 = "gun"; weight1 = "light" }
+            if (unit1 == "Riflemen") { VIT1 = 1.5; DEF1 = 0.05; DAM1 = 1.5; ATK1 = 1.5; range1 = 1; type1 = "gun"; weight1 = "light" }
+            if (unit1 == "LightCavalry") { VIT1 = 1; DEF1 = 0.5; DAM1 = 1.25; ATK1 = 0.5; range1 = 0; type1 = "cavalry"; weight1 = "medium" }
+            if (unit1 == "HeavyCavalry") { VIT1 = 1; DEF1 = 1; DAM1 = 1.5; ATK1 = 0.75; range1 = 0; type1 = "cavalry"; weight1 = "heavy" }
+            if (unit1 == "EliteCavalry") { VIT1 = 1.5; DEF1 = 1.25; DAM1 = 1.75; ATK1 = 1; range1 = 0; type1 = "cavalry"; weight1 = "medium" }
+            if (unit1 == "RegimentalGuns") { VIT1 = 1; DEF1 = 0.05; DAM1 = 10; ATK1 = 2; range1 = 1; type1 = "artillery"; weight1 = "medium" }
+            if (unit1 == "FieldCannons") { VIT1 = 1; DEF1 = 0.05; DAM1 = 25; ATK1 = 2; range1 = 2; type1 = "artillery"; weight1 = "heavy" }
+            if (unit1 == "SiegeGuns") { VIT1 = 1; DEF1 = 0.05; DAM1 = 35; ATK1 = 2; range1 = 2; type1 = "artillery"; weight1 = "heavy" }
+            width1 = amount1;
+            if (unit1 == "RegimentalGuns") { width1 = width1 * 4 }
+            if (unit1 == "FieldCannons" || unit1 == "SiegeGuns") { width1 = width1 * 10 }
+
+            // Side 2 variables
+            unit2 = document.querySelector('input[name="2unit"]:checked').value;
+            amount2 = document.getElementById('2amount').value;
+            quality2 = document.getElementById('2quality').value;
+            discipline2 = document.getElementById('2discipline').value;
+            defences2 = document.getElementById('2defences').value;
+            gm2 = document.getElementById('2gm').value;
+            cavcharge2 = document.getElementById('2cavcharge').checked;
+            bayonets2 = document.getElementById('2bayonets').checked;
+            flank2 = document.getElementById('2flank').checked;
+            behind2 = document.getElementById('2behind').checked;
+            river2 = document.getElementById('2river').checked;
+
+            if (unit2 == "Levies") { VIT2 = 0.5; DEF2 = 0.05; DAM2 = 0.5; ATK2 = 0.05; range2 = 0; type2 = "melee"; weight2 = "light" }
+            if (unit2 == "Militia") { VIT2 = 0.75; DEF2 = 0.25; DAM2 = 0.75; ATK2 = 0.25; range2 = 0; type2 = "melee"; weight2 = "light" }
+            if (unit2 == "LightInfantry") { VIT2 = 1; DEF2 = 0.5; DAM2 = 1; ATK2 = 0.5; range2 = 0; type2 = "melee"; weight2 = "light" }
+            if (unit2 == "HeavyInfantry") { VIT2 = 1; DEF2 = 0.75; DAM2 = 1.25; ATK2 = 0.75; range2 = 0; type2 = "melee"; weight2 = "medium" }
+            if (unit2 == "EliteInfantry") { VIT2 = 1.5; DEF2 = 1; DAM2 = 1.5; ATK2 = 1; range2 = 0; type2 = "melee"; weight2 = "light" }
+            if (unit2 == "Archers") { VIT2 = 1; DEF2 = 0; DAM2 = 1.25; ATK2 = 0.5; range2 = 1; type2 = "ranged"; weight2 = "light" }
+            if (unit2 == "Crossbowmen") { VIT2 = 1; DEF2 = 0.05; DAM2 = 1; ATK2 = 0.6; range2 = 1; type2 = "ranged"; weight2 = "light" }
+            if (unit2 == "HandCannoneers") { VIT2 = 1; DEF2 = 0.05; DAM2 = 0.25; ATK2 = 1; range2 = 1; type2 = "ranged"; weight2 = "medium" }
+            if (unit2 == "Musketeers") { VIT2 = 1; DEF2 = 0.25; DAM2 = 1; ATK2 = 1.25; range2 = 1; type2 = "gun"; weight2 = "light" }
+            if (unit2 == "MusketMilitia") { VIT2 = 0.75; DEF2 = 0.05; DAM2 = 0.75; ATK2 = 1; range2 = 1; type2 = "gun"; weight2 = "light" }
+            if (unit2 == "Riflemen") { VIT2 = 1.5; DEF2 = 0.05; DAM2 = 1.5; ATK2 = 1.5; range2 = 1; type2 = "gun"; weight2 = "light" }
+            if (unit2 == "LightCavalry") { VIT2 = 1; DEF2 = 0.5; DAM2 = 1.25; ATK2 = 0.5; range2 = 0; type2 = "cavalry"; weight2 = "medium" }
+            if (unit2 == "HeavyCavalry") { VIT2 = 1; DEF2 = 1; DAM2 = 1.5; ATK2 = 0.75; range2 = 0; type2 = "cavalry"; weight2 = "heavy" }
+            if (unit2 == "EliteCavalry") { VIT2 = 1.5; DEF2 = 1.25; DAM2 = 1.75; ATK2 = 1; range2 = 0; type2 = "cavalry"; weight2 = "medium" }
+            if (unit2 == "RegimentalGuns") { VIT2 = 1; DEF2 = 0.05; DAM2 = 10; ATK2 = 2; range2 = 1; type2 = "artillery"; weight2 = "medium" }
+            if (unit2 == "FieldCannons") { VIT2 = 1; DEF2 = 0.05; DAM2 = 25; ATK2 = 2; range2 = 2; type2 = "artillery"; weight2 = "heavy" }
+            if (unit2 == "SiegeGuns") { VIT2 = 1; DEF2 = 0.05; DAM2 = 35; ATK2 = 2; range2 = 2; type2 = "artillery"; weight2 = "heavy" }
+            width2 = amount2;
+            if (unit2 == "RegimentalGuns") { width2 = width2 * 4 }
+            if (unit2 == "FieldCannons" || unit2 == "SiegeGuns") { width2 = width2 * 10 }
+
+            // Overall variables
+            terrain = document.querySelector('input[name="terrain"]:checked').value;
+            range = document.getElementById('range').value;
+            width = document.getElementById('width').value;
+            
+
+            // Counting unit stats
+            if (terrain == "urban") {
+                if (weight1 == "medium") {
+                    VIT1 = VIT1 * 0.85;
+                    DAM1 = DAM1 * 0.85;
+                }
+                if (weight1 == "heavy") {
+                    VIT1 = VIT1 * 0.6;
+                    DAM1 = DAM1 * 0.6;
+                }
+                if (weight2 == "medium") {
+                    VIT2 = VIT2 * 0.85;
+                    DAM2 = DAM2 * 0.85;
+                }
+                if (weight2 == "heavy") {
+                    VIT2 = VIT2 * 0.6;
+                    DAM2 = DAM2 * 0.6;
+                }
+            }
+            if (terrain == "forest") {
+                if (weight1 == "medium") {
+                    VIT1 = VIT1 * 0.65;
+                    DAM1 = DAM1 * 0.65;
+                }
+                if (weight1 == "heavy") {
+                    VIT1 = VIT1 * 0.4;
+                    DAM1 = DAM1 * 0.4;
+                }
+                if (weight2 == "medium") {
+                    VIT2 = VIT2 * 0.65;
+                    DAM2 = DAM2 * 0.65;
+                }
+                if (weight2 == "heavy") {
+                    VIT2 = VIT2 * 0.4;
+                    DAM2 = DAM2 * 0.4;
+                }
+            }
+            if (range > range1) { DAM1 = 0 }
+            if (range > range2) { DAM2 = 0 }
+            if (range == 0 && range1 == 1) {
+                if (type1 == "gun" && bayonets1) {
+                    DAM1 = DAM1;
+                }
+                else {
+                    DAM1 = DAM1 * 0.5;
+                }
+            }
+            if (range == 0 && range2 == 1) {
+                if (type2 == "gun" && bayonets2) {
+                    DAM2 = DAM2;
+                }
+                else {
+                    DAM2 = DAM2 * 0.5;
+                }
+            }
+            if (range == 0 && range1 == 2) { DAM1 = 0 }
+            if (range == 0 && range2 == 2) { DAM2 = 0 }
+            if (range !== 2) {
+                if (width1 > width) { DAM1 = DAM1 * (width / width1) }
+                if (width2 > width) { DAM2 = DAM2 * (width / width2) }
+            }
+            VIT1 = VIT1 * discipline1 * (1 + defences1 / 4 + gm1 / 10); DEF1 = DEF1 * quality1; DAM1 = DAM1 * quality1 * discipline1 * (1 + defences1 / 8 + gm1 / 10); ATK1 = ATK1 * quality1;
+            VIT2 = VIT2 * discipline2 * (1 + defences2 / 4 + gm2 / 10); DEF2 = DEF2 * quality2; DAM2 = DAM2 * quality2 * discipline2 * (1 + defences2 / 8 + gm2 / 10); ATK2 = ATK2 * quality2;
+            if (cavcharge1 && type1 == "cavalry") { DEF1 = DEF1 * 1.2; DAM1 = DAM1 * 1.5; ATK1 = ATK1 * 1.5; }
+            if (cavcharge2 && type2 == "cavalry") { DEF2 = DEF2 * 1.2; DAM2 = DAM2 * 1.5; ATK2 = ATK2 * 1.5; }
+            if (flank1) { DAM1 = DAM1 * 1.25 }
+            if (flank2) { DAM2 = DAM2 * 1.25 }
+            if (behind1) { DAM1 = DAM1 * 1.5 }
+            if (behind2) { DAM2 = DAM2 * 1.5 }
+            if (river1) { DAM1 = DAM1 * 0.5 }
+            if (river2) { DAM2 = DAM2 * 0.5 }
+
+            if (DEF1 > ATK2) { DAM2 = DAM2 * (ATK2 / DEF1) }
+            if (DEF2 > ATK1) { DAM1 = DAM1 * (ATK1 / DEF2) }
+
+            if (type1 == "artillery") { accuracy1 = (range == 2 ? Math.max(0, Math.min(1, width2 / 500)) : Math.max(0, Math.min(1, width2 / 250))) } else { accuracy1 = 1 }
+            if (type2 == "artillery") { accuracy2 = (range == 2 ? Math.max(0, Math.min(1, width1 / 500)) : Math.max(0, Math.min(1, width1 / 250))) } else { accuracy2 = 1 }
+            if (type1 == "artillery") { DAM1 = DAM1 * accuracy1 }
+            if (type2 == "artillery") { DAM2 = DAM2 * accuracy2 }
+
+            health1 = amount1 * VIT1;
+            attack1 = amount1 * DAM1 / 4;
+            health2 = amount2 * VIT2;
+            attack2 = amount2 * DAM2 / 4;
+
+            // counting loses
+            loses1p = Math.min(1, attack2 / health1);
+            loses2p = Math.min(1, attack1 / health2);
+            loses1 = Math.ceil(loses1p * amount1);
+            loses2 = Math.ceil(loses2p * amount2);
+            remaining1 = amount1 - loses1;
+            remaining2 = amount2 - loses2;
+
+            // printing results
+            document.getElementById("results").innerHTML =
+            "<h4> Side 1 </h4> <br> -" + loses1 + " " + unit1 + " (" + loses1p * 100 + "%) <br> +" + loses1 + " casualties <br> " + remaining1 + " remaining <br>" +
+            "<h4> Side 2 </h4> <br> -" + loses2 + " " + unit2 + " (" + loses2p * 100 + "%) <br> +" + loses2 + " casualties <br> " + remaining2 + " remaining <br>";
+        }
+
+    </script>
+</body>
+</html>
+
