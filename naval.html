@@ -1,1 +1,68 @@
-﻿
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Spy Action</title>
+    <style>
+        body {
+            font-family: Calibri;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .input-list {
+            flex: 1;
+            padding: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 10%;
+            padding: 1px;
+        }
+
+        .buttons-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="buttons-container">
+        <button onclick="redirectTo('index.html')">Map</button>
+        <button onclick="redirectTo('land.html')">Land Battle</button>
+        <button onclick="redirectTo('naval.html')">Naval Battle</button>
+        <button onclick="redirectTo('spy.html')">Spy Action</button>
+    </div>
+
+    <div class="container">
+
+        <div class="input-list">
+            <h2> W.I.P. </h2>
+        </div>
+
+    </div>
+
+    <script>
+        function redirectTo(page) {
+            window.location.href = page;
+        }
+    </script>
+
+</body>
+
+</html>
