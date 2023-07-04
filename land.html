@@ -209,8 +209,8 @@
             behind1 = document.getElementById('1behind').checked;
             river1 = document.getElementById('1river').checked;
 
-            if (unit1 == "Levies") { VIT1 = 0.5; DEF1 = 0.05; DAM1 = 0.5; ATK1 = 0.05; range1 = 0; type1 = "melee"; weight1 = "light" }
-            if (unit1 == "Militia") { VIT1 = 0.75; DEF1 = 0.25; DAM1 = 0.75; ATK1 = 0.25; range1 = 0; type1 = "melee"; weight1 = "light" }
+            if (unit1 == "Levies") { VIT1 = 0.75; DEF1 = 0.05; DAM1 = 0.5; ATK1 = 0.05; range1 = 0; type1 = "melee"; weight1 = "light" }
+            if (unit1 == "Militia") { VIT1 = 1; DEF1 = 0.25; DAM1 = 0.75; ATK1 = 0.25; range1 = 0; type1 = "melee"; weight1 = "light" }
             if (unit1 == "LightInfantry") { VIT1 = 1; DEF1 = 0.5; DAM1 = 1; ATK1 = 0.5; range1 = 0; type1 = "melee"; weight1 = "light" }
             if (unit1 == "HeavyInfantry") { VIT1 = 1; DEF1 = 0.75; DAM1 = 1.25; ATK1 = 0.75; range1 = 0; type1 = "melee"; weight1 = "medium" }
             if (unit1 == "EliteInfantry") { VIT1 = 1.5; DEF1 = 1; DAM1 = 1.5; ATK1 = 1; range1 = 0; type1 = "melee"; weight1 = "light" }
@@ -327,10 +327,11 @@
             }
             if (range == 0 && range1 == 2) { DAM1 = 0 }
             if (range == 0 && range2 == 2) { DAM2 = 0 }
-            if (range !== 2) {
+            if (range == 0 || range == 1) {
                 if (width1 > width) { DAM1 = DAM1 * (width / width1) }
                 if (width2 > width) { DAM2 = DAM2 * (width / width2) }
             }
+            debugger;
             VIT1 = VIT1 * discipline1 * (1 + defences1 / 4 + gm1 / 10); DEF1 = DEF1 * quality1; DAM1 = DAM1 * quality1 * discipline1 * (1 + defences1 / 8 + gm1 / 10); ATK1 = ATK1 * quality1;
             VIT2 = VIT2 * discipline2 * (1 + defences2 / 4 + gm2 / 10); DEF2 = DEF2 * quality2; DAM2 = DAM2 * quality2 * discipline2 * (1 + defences2 / 8 + gm2 / 10); ATK2 = ATK2 * quality2;
             if (cavcharge1 && type1 == "cavalry") { DEF1 = DEF1 * 1.2; DAM1 = DAM1 * 1.5; ATK1 = ATK1 * 1.5; }
@@ -342,8 +343,8 @@
             if (river1) { DAM1 = DAM1 * 0.5 }
             if (river2) { DAM2 = DAM2 * 0.5 }
 
-            if (unit1 == "HeavyInfantry" && type2 == "cavalry" && !flank2 && !behind2) { DEF1 = DEF1 + 0.25; DAM1 = DAM1 * 1.25 }
-            if (unit2 == "HeavyInfantry" && type1 == "cavalry" && !flank1 && !behind1) { DEF2 = DEF2 + 0.25; DAM2 = DAM2 * 1.25 }
+            if (unit1 == "HeavyInfantry" && type2 == "cavalry" && !flank2 && !behind2) { DEF1 = DEF1 + 0.25; DAM1 = DAM1 * 1.5 }
+            if (unit2 == "HeavyInfantry" && type1 == "cavalry" && !flank1 && !behind1) { DEF2 = DEF2 + 0.25; DAM2 = DAM2 * 1.5 }
 
             if (DEF1 > ATK2) { DAM2 = DAM2 * (ATK2 / DEF1) }
             if (DEF2 > ATK1) { DAM1 = DAM1 * (ATK1 / DEF2) }
