@@ -342,6 +342,9 @@
             if (river1) { DAM1 = DAM1 * 0.5 }
             if (river2) { DAM2 = DAM2 * 0.5 }
 
+            if (unit1 == "HeavyInfantry" && type2 == "cavalry" && !flank2 && !behind2) { DEF1 = DEF1 + 0.25; DAM1 = DAM1 * 1.25 }
+            if (unit2 == "HeavyInfantry" && type1 == "cavalry" && !flank1 && !behind1) { DEF2 = DEF2 + 0.25; DAM2 = DAM2 * 1.25 }
+
             if (DEF1 > ATK2) { DAM2 = DAM2 * (ATK2 / DEF1) }
             if (DEF2 > ATK1) { DAM1 = DAM1 * (ATK1 / DEF2) }
 
