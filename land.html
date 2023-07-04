@@ -226,7 +226,7 @@
             if (unit1 == "RegimentalGuns") { VIT1 = 1; DEF1 = 0.05; DAM1 = 10; ATK1 = 2; range1 = 1; type1 = "artillery"; weight1 = "medium" }
             if (unit1 == "FieldCannons") { VIT1 = 1; DEF1 = 0.05; DAM1 = 25; ATK1 = 2; range1 = 2; type1 = "artillery"; weight1 = "heavy" }
             if (unit1 == "SiegeGuns") { VIT1 = 1; DEF1 = 0.05; DAM1 = 35; ATK1 = 2; range1 = 2; type1 = "artillery"; weight1 = "heavy" }
-            width1 = amount1;
+            width1 = parseInt(amount1);
             if (unit1 == "RegimentalGuns") { width1 = width1 * 4 }
             if (unit1 == "FieldCannons" || unit1 == "SiegeGuns") { width1 = width1 * 10 }
 
@@ -260,7 +260,7 @@
             if (unit2 == "RegimentalGuns") { VIT2 = 1; DEF2 = 0.05; DAM2 = 10; ATK2 = 2; range2 = 1; type2 = "artillery"; weight2 = "medium" }
             if (unit2 == "FieldCannons") { VIT2 = 1; DEF2 = 0.05; DAM2 = 25; ATK2 = 2; range2 = 2; type2 = "artillery"; weight2 = "heavy" }
             if (unit2 == "SiegeGuns") { VIT2 = 1; DEF2 = 0.05; DAM2 = 35; ATK2 = 2; range2 = 2; type2 = "artillery"; weight2 = "heavy" }
-            width2 = amount2;
+            width2 = parseInt(amount2);
             if (unit2 == "RegimentalGuns") { width2 = width2 * 4 }
             if (unit2 == "FieldCannons" || unit2 == "SiegeGuns") { width2 = width2 * 10 }
 
@@ -331,15 +331,19 @@
                 if (width1 > width) { DAM1 = DAM1 * (width / width1) }
                 if (width2 > width) { DAM2 = DAM2 * (width / width2) }
             }
-            debugger;
+            
             VIT1 = VIT1 * discipline1 * (1 + defences1 / 4 + gm1 / 10); DEF1 = DEF1 * quality1; DAM1 = DAM1 * quality1 * discipline1 * (1 + defences1 / 8 + gm1 / 10); ATK1 = ATK1 * quality1;
             VIT2 = VIT2 * discipline2 * (1 + defences2 / 4 + gm2 / 10); DEF2 = DEF2 * quality2; DAM2 = DAM2 * quality2 * discipline2 * (1 + defences2 / 8 + gm2 / 10); ATK2 = ATK2 * quality2;
             if (cavcharge1 && type1 == "cavalry") { DEF1 = DEF1 * 1.2; DAM1 = DAM1 * 1.5; ATK1 = ATK1 * 1.5; }
             if (cavcharge2 && type2 == "cavalry") { DEF2 = DEF2 * 1.2; DAM2 = DAM2 * 1.5; ATK2 = ATK2 * 1.5; }
             if (flank1) { DAM1 = DAM1 * 1.25 }
             if (flank2) { DAM2 = DAM2 * 1.25 }
-            if (behind1) { DAM1 = DAM1 * 1.5 }
-            if (behind2) { DAM2 = DAM2 * 1.5 }
+            if (behind1) { DAM1 = DAM1 * 1.75 }
+            if (behind2) { DAM2 = DAM2 * 1.75 }
+            if (flank1 && cavcharge1 && type1 == "cavalry") { DAM1 = DAM1 * 1.1 }
+            if (flank2 && cavcharge2 && type2 == "cavalry") { DAM2 = DAM2 * 1.1 }
+            if (behind1 && cavcharge1 && type1 == "cavalry") { DAM1 = DAM1 * 1.25 }
+            if (behind2 && cavcharge2 && type2 == "cavalry") { DAM2 = DAM2 * 1.25 }
             if (river1) { DAM1 = DAM1 * 0.5 }
             if (river2) { DAM2 = DAM2 * 0.5 }
 
