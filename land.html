@@ -347,6 +347,10 @@
             if (river1) { DAM1 = DAM1 * 0.5 }
             if (river2) { DAM2 = DAM2 * 0.5 }
 
+            if (terrain == "urban" && range == 1) { DAM1 = DAM1 * 0.75; DAM2 = DAM2 * 0.75; }
+            if (range == 1) { DAM1 = DAM1 * (1 - defences2 * 0.1); DAM2 = DAM2 * (1 - defences1 * 0.1); }
+            if (range == 0) { DAM1 = DAM1 * (1 - defences2 * 0.05); DAM2 = DAM2 * (1 - defences1 * 0.05); }
+
             if (unit1 == "HeavyInfantry" && type2 == "cavalry" && !flank2 && !behind2) { DEF1 = DEF1 + 0.25; DAM1 = DAM1 * 1.5 }
             if (unit2 == "HeavyInfantry" && type1 == "cavalry" && !flank1 && !behind1) { DEF2 = DEF2 + 0.25; DAM2 = DAM2 * 1.5 }
 
