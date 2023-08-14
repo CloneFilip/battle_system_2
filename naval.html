@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Spy Action</title>
+    <title>Naval Battle</title>
     <style>
         body {
             font-family: Calibri;
@@ -51,15 +51,313 @@
 
     <div class="container">
 
-        <div class="input-list">
-            <h2> W.I.P. </h2>
+        <div class="container">
+            <div class="input-list">
+                <h2>Side 1 Inputs</h2>
+                <form>
+                    <h3> Ships </h3>
+                    <input type="number" id="1LightShips" value="0"> Light Ships
+                    <br>
+                    <input type="number" id="1MediumShips" value="0"> Medium Ships
+                    <br>
+                    <input type="number" id="1HeavyShips" value="0"> Heavy Ships
+                    <br>
+
+                    <h3> Quality </h3>
+                    <input type="number" id="1LightShipsQ" value="1"> Light Ships Quality
+                    <br>
+                    <input type="number" id="1MediumShipsQ" value="1"> Medium Ships Quality
+                    <br>
+                    <input type="number" id="1HeavyShipsQ" value="1"> Heavy Ships Quality
+                    <br>
+
+                    <h3> GM Boost </h3>
+                    GM Boost <input type="range" id="1gm" name="1GM" min="0" max="10" value="0" oninput="this.nextElementSibling.value = this.value * 10"> <output>0</output>% <br>
+                </form>
+            </div>
+
+            <div class="input-list">
+                <h2>Side 2 Inputs</h2>
+                <form>
+                    <h3> Ships </h3>
+                    <input type="number" id="2LightShips" value="0"> Light Ships
+                    <br>
+                    <input type="number" id="2MediumShips" value="0"> Medium Ships
+                    <br>
+                    <input type="number" id="2HeavyShips" value="0"> Heavy Ships
+                    <br>
+
+                    <h3> Quality </h3>
+                    <input type="number" id="2LightShipsQ" value="1"> Light Ships Quality
+                    <br>
+                    <input type="number" id="2MediumShipsQ" value="1"> Medium Ships Quality
+                    <br>
+                    <input type="number" id="2HeavyShipsQ" value="1"> Heavy Ships Quality
+                    <br>
+
+                    <h3> GM Boost </h3>
+                    GM Boost <input type="range" id="2gm" name="2GM" min="0" max="10" value="0" oninput="this.nextElementSibling.value = this.value * 10"> <output>0</output>% <br>
+                </form>
+            </div>
+
+            <div class="input-list">
+                <h2>Results</h2>
+                <button onclick="handleSubmit()">Submit</button> <br />
+                <br /> <br />
+                <div id="results"></div>
+            </div>
         </div>
+
 
     </div>
 
     <script>
         function redirectTo(page) {
             window.location.href = page;
+        }
+        function handleSubmit() {
+            // Side 1 Variables
+            LightShips1 = document.getElementById('1LightShips').value * 1;
+            MediumShips1 = document.getElementById('1MediumShips').value * 1;
+            HeavyShips1 = document.getElementById('1HeavyShips').value * 1;
+            LightShipsQ1 = document.getElementById('1LightShipsQ').value * 1;
+            MediumShipsQ1 = document.getElementById('1MediumShipsQ').value * 1;
+            HeavyShipsQ1 = document.getElementById('1HeavyShipsQ').value * 1;
+            gm1 = document.getElementById('1gm').value * 0.05;
+
+            ships1 = LightShips1 + MediumShips1 + HeavyShips1;
+
+            X = 0;
+            fleet1def = [];
+            fleet1atk = [];
+            for (i = 0; i < HeavyShips1; i++) {
+                fleet1def[X] = 20 * (HeavyShipsQ1 + gm1);
+                fleet1atk[X] = 4 * (HeavyShipsQ1 + gm1);
+                X++;
+            }
+            for (i = 0; i < MediumShips1; i++) {
+                fleet1def[X] = 10 * (MediumShipsQ1 + gm1);
+                fleet1atk[X] = 3 * (MediumShipsQ1 + gm1);
+                X++;
+            }
+            for (i = 0; i < LightShips1; i++) {
+                fleet1def[X] = 5 * (LightShipsQ1 + gm1);
+                fleet1atk[X] = 2 * (LightShipsQ1 + gm1);
+                X++;
+            }
+
+
+            // Side 2 Variables
+            LightShips2 = document.getElementById('2LightShips').value * 1;
+            MediumShips2 = document.getElementById('2MediumShips').value * 1;
+            HeavyShips2 = document.getElementById('2HeavyShips').value * 1;
+            LightShipsQ2 = document.getElementById('2LightShipsQ').value * 1;
+            MediumShipsQ2 = document.getElementById('2MediumShipsQ').value * 1;
+            HeavyShipsQ2 = document.getElementById('2HeavyShipsQ').value * 1;
+            gm2 = document.getElementById('2gm').value * 0.05;
+
+            ships2 = LightShips2 + MediumShips2 + HeavyShips2;
+
+            X = 0;
+            fleet2def = [];
+            fleet2atk = [];
+            for (i = 0; i < HeavyShips2; i++) {
+                fleet2def[X] = 20 * (HeavyShipsQ2 + gm2);
+                fleet2atk[X] = 4 * (HeavyShipsQ2 + gm2);
+                X++;
+            }
+            for (i = 0; i < MediumShips2; i++) {
+                fleet2def[X] = 10 * (MediumShipsQ2 + gm2);
+                fleet2atk[X] = 3 * (MediumShipsQ2 + gm2);
+                X++;
+            }
+            for (i = 0; i < LightShips2; i++) {
+                fleet2def[X] = 5 * (LightShipsQ2 + gm2);
+                fleet2atk[X] = 2 * (LightShipsQ2 + gm2);
+                X++;
+            }
+
+            HP1Overall = 0;
+            for (i = 0; i < ships1; i++) {
+                HP1Overall += fleet1def[i];
+            }
+            HP2Overall = 0;
+            for (i = 0; i < ships2; i++) {
+                HP2Overall += fleet2def[i];
+            }
+
+            // HP Save
+            fleet1defSave = [];
+            fleet2defSave = [];
+            for (i = 0; i < ships1; i++) {
+                fleet1defSave[i] = fleet1def[i];
+            }
+            for (i = 0; i < ships2; i++) {
+                fleet2defSave[i] = fleet2def[i];
+            }
+
+            // Battle
+            function battle() {
+                for (i = 0; i < ships1; i++) {
+                    y = 0;
+                    do {
+                        if (fleet2def[y] > 0 && fleet1def[i] > 0) {
+                            atkmod1 = fleet1def[i] / fleet1defSave[i];
+                            atkmod2 = fleet2def[y] / fleet2defSave[y];
+                            fleet1def[i] = fleet1def[i] - fleet2atk[y] * atkmod2;
+                            fleet2def[y] = fleet2def[y] - fleet1atk[i] * atkmod1;
+                            debugger;
+                        }
+                        y++;
+                    } while (fleet1def[i] > 0 && y < ships2);
+                }
+                HP1OverallNew = 0;
+                for (i = 0; i < ships1; i++) {
+                    HP1OverallNew += Math.max(0, fleet1def[i]);
+                }
+                HP2OverallNew = 0;
+                for (i = 0; i < ships2; i++) {
+                    HP2OverallNew += Math.max(0, fleet2def[i]);
+                }
+            }
+
+            do {
+                battle();
+            } while (HP1OverallNew > HP1Overall * 0.7 && HP2OverallNew > HP2Overall * 0.7);
+
+
+            // Assesing Damages
+            X = 0;
+            fleet1status = [];
+            for (i = 0; i < HeavyShips1; i++) {
+                if (fleet1def[X] <= 0) fleet1status[X] = 0;
+                if (fleet1def[X] > 0 && fleet1def[X] <= 8 * (HeavyShipsQ1 + gm2)) fleet1status[X] = 1;
+                if (fleet1def[X] > 8 * (HeavyShipsQ1 + gm2) && fleet1def[X] <= 16 * (HeavyShipsQ1 + gm2)) fleet1status[X] = 2;
+                if (fleet1def[X] > 16 * (HeavyShipsQ1 + gm2)) fleet1status[X] = 3;
+                X++;
+            }
+            for (i = 0; i < MediumShips1; i++) {
+                if (fleet1def[X] <= 0) fleet1status[X] = 0;
+                if (fleet1def[X] > 0 && fleet1def[X] <= 4 * (MediumShipsQ1 + gm2)) fleet1status[X] = 1;
+                if (fleet1def[X] > 4 * (MediumShipsQ1 + gm2) && fleet1def[X] <= 8 * (MediumShipsQ1 + gm2)) fleet1status[X] = 2;
+                if (fleet1def[X] > 8 * (MediumShipsQ1 + gm2)) fleet1status[X] = 3;
+                X++;
+            }
+            for (i = 0; i < LightShips1; i++) {
+                if (fleet1def[X] <= 0) fleet1status[X] = 0;
+                if (fleet1def[X] > 0 && fleet1def[X] <= 2 * (LightShipsQ1 + gm2)) fleet1status[X] = 1;
+                if (fleet1def[X] > 2 * (LightShipsQ1 + gm2) && fleet1def[X] <= 3.5 * (LightShipsQ1 + gm2)) fleet1status[X] = 2;
+                if (fleet1def[X] > 3.5 * (LightShipsQ1 + gm2)) fleet1status[X] = 3;
+                X++;
+            }
+
+            X = 0;
+            fleet2status = [];
+            for (i = 0; i < HeavyShips2; i++) {
+                if (fleet2def[X] <= 0) fleet2status[X] = 0;
+                if (fleet2def[X] > 0 && fleet2def[X] <= 8 * (HeavyShipsQ2 + gm2)) fleet2status[X] = 1;
+                if (fleet2def[X] > 8 * (HeavyShipsQ2 + gm2) && fleet2def[X] <= 16 * (HeavyShipsQ2 + gm2)) fleet2status[X] = 2;
+                if (fleet2def[X] > 16 * (HeavyShipsQ2 + gm2)) fleet2status[X] = 3;
+                X++;
+            }
+            for (i = 0; i < MediumShips2; i++) {
+                if (fleet2def[X] <= 0) fleet2status[X] = 0;
+                if (fleet2def[X] > 0 && fleet2def[X] <= 4 * (MediumShipsQ2 + gm2)) fleet2status[X] = 1;
+                if (fleet2def[X] > 4 * (MediumShipsQ2 + gm2) && fleet2def[X] <= 8 * (MediumShipsQ2 + gm2)) fleet2status[X] = 2;
+                if (fleet2def[X] > 8 * (MediumShipsQ2 + gm2)) fleet2status[X] = 3;
+                X++;
+            }
+            for (i = 0; i < LightShips2; i++) {
+                if (fleet2def[X] <= 0) fleet2status[X] = 0;
+                if (fleet2def[X] > 0 && fleet2def[X] <= 2 * (LightShipsQ2 + gm2)) fleet2status[X] = 1;
+                if (fleet2def[X] > 2 * (LightShipsQ2 + gm2) && fleet2def[X] <= 3.5 * (LightShipsQ2 + gm2)) fleet2status[X] = 2;
+                if (fleet2def[X] > 3.5 * (LightShipsQ2 + gm2)) fleet2status[X] = 3;
+                X++;
+            }
+
+            // Results
+            X = 0;
+            HeaviesSunk1 = 0;
+            HeaviesHD1 = 0;
+            HeaviesLD1 = 0;
+            HeaviesUD1 = 0;
+            MediumsSunk1 = 0;
+            MediumsHD1 = 0;
+            MediumsLD1 = 0;
+            MediumsUD1 = 0;
+            LightsSunk1 = 0;
+            LightsHD1 = 0;
+            LightsLD1 = 0;
+            LightsUD1 = 0;
+            for (i = 0; i < HeavyShips1; i++) {
+                if (fleet1status[X] == 0) HeaviesSunk1++;
+                if (fleet1status[X] == 1) HeaviesHD1++;
+                if (fleet1status[X] == 2) HeaviesLD1++;
+                if (fleet1status[X] == 3) HeaviesUD1++;
+                X++;
+            }
+            for (i = 0; i < MediumShips1; i++) {
+                if (fleet1status[X] == 0) MediumsSunk1++;
+                if (fleet1status[X] == 1) MediumsHD1++;
+                if (fleet1status[X] == 2) MediumsLD1++;
+                if (fleet1status[X] == 3) MediumsUD1++;
+                X++;
+            }
+            for (i = 0; i < LightShips1; i++) {
+                if (fleet1status[X] == 0) LightsSunk1++;
+                if (fleet1status[X] == 1) LightsHD1++;
+                if (fleet1status[X] == 2) LightsLD1++;
+                if (fleet1status[X] == 3) LightsUD1++;
+                X++;
+            }
+
+            X = 0;
+            HeaviesSunk2 = 0;
+            HeaviesHD2 = 0;
+            HeaviesLD2 = 0;
+            HeaviesUD2 = 0;
+            MediumsSunk2 = 0;
+            MediumsHD2 = 0;
+            MediumsLD2 = 0;
+            MediumsUD2 = 0;
+            LightsSunk2 = 0;
+            LightsHD2 = 0;
+            LightsLD2 = 0;
+            LightsUD2 = 0;
+            for (i = 0; i < HeavyShips2; i++) {
+                if (fleet2status[X] == 0) HeaviesSunk2++;
+                if (fleet2status[X] == 1) HeaviesHD2++;
+                if (fleet2status[X] == 2) HeaviesLD2++;
+                if (fleet2status[X] == 3) HeaviesUD2++;
+                X++;
+            }
+            for (i = 0; i < MediumShips2; i++) {
+                if (fleet2status[X] == 0) MediumsSunk2++;
+                if (fleet2status[X] == 1) MediumsHD2++;
+                if (fleet2status[X] == 2) MediumsLD2++;
+                if (fleet2status[X] == 3) MediumsUD2++;
+                X++;
+            }
+            for (i = 0; i < LightShips2; i++) {
+                if (fleet2status[X] == 0) LightsSunk2++;
+                if (fleet2status[X] == 1) LightsHD2++;
+                if (fleet2status[X] == 2) LightsLD2++;
+                if (fleet2status[X] == 3) LightsUD2++;
+                X++;
+            }
+            
+
+            // printing results
+            document.getElementById("results").innerHTML =
+                "<h3> Side 1: </h3>" + (HeaviesSunk1 > 0 ? "-" + HeaviesSunk1 + " HeavyShips <br>" : "") + (MediumsSunk1 > 0 ? "-" + MediumsSunk1 + " MediumShips <br>" : "") + (LightsSunk1 > 0 ? "-" + LightsSunk1 + " LightShips <br>" : "") +
+                (HeaviesHD1 > 0 ? HeaviesHD1 + " Heavies heavily damaged <br>" : "") + (MediumsHD1 > 0 ? MediumsHD1 + " Mediums heavily damaged <br>" : "") + (LightsHD1 > 0 ? LightsHD1 + " Lights heavily damaged <br>" : "") +
+                (HeaviesLD1 > 0 ? HeaviesLD1 + " Heavies lightly damaged <br>" : "") + (MediumsLD1 > 0 ? MediumsLD1 + " Mediums lightly damaged <br>" : "") + (LightsLD1 > 0 ? LightsLD1 + " Lights lightly damaged <br>" : "") +
+                (HeaviesUD1 > 0 ? HeaviesUD1 + " Heavies undamaged <br>" : "") + (MediumsUD1 > 0 ? MediumsUD1 + " Mediums undamaged <br>" : "") + (LightsUD1 > 0 ? LightsUD1 + " Lights undamaged <br>" : "") +
+                "<h3> Side 2: </h3>" + (HeaviesSunk2 > 0 ? "-" + HeaviesSunk2 + " HeavyShips <br>" : "") + (MediumsSunk2 > 0 ? "-" + MediumsSunk2 + " MediumShips <br>" : "") + (LightsSunk2 > 0 ? "-" + LightsSunk2 + " LightShips <br>" : "") +
+                (HeaviesHD2 > 0 ? HeaviesHD2 + " Heavies heavily damaged <br>" : "") + (MediumsHD2 > 0 ? MediumsHD2 + " Mediums heavily damaged <br>" : "") + (LightsHD2 > 0 ? LightsHD2 + " Lights heavily damaged <br>" : "") +
+                (HeaviesLD2 > 0 ? HeaviesLD2 + " Heavies lightly damaged <br>" : "") + (MediumsLD2 > 0 ? MediumsLD2 + " Mediums lightly damaged <br>" : "") + (LightsLD2 > 0 ? LightsLD2 + " Lights lightly damaged <br>" : "") +
+                (HeaviesUD2 > 0 ? HeaviesUD2 + " Heavies undamaged <br>" : "") + (MediumsUD2 > 0 ? MediumsUD2 + " Mediums undamaged <br>" : "") + (LightsUD2 > 0 ? LightsUD2 + " Lights undamaged <br>" : "")
+                ;
         }
     </script>
 
