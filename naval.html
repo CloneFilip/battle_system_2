@@ -28,7 +28,7 @@
         }
 
         input[type="number"] {
-            width: 10%;
+            width: 20%;
             padding: 1px;
         }
 
@@ -131,18 +131,18 @@
             fleet1def = [];
             fleet1atk = [];
             for (i = 0; i < HeavyShips1; i++) {
-                fleet1def[X] = 20 * (HeavyShipsQ1 + gm1);
-                fleet1atk[X] = 4 * (HeavyShipsQ1 + gm1);
+                fleet1def[X] = 20 * (1 + HeavyShipsQ1 + gm1);
+                fleet1atk[X] = 4 * (1 + HeavyShipsQ1 + gm1);
                 X++;
             }
             for (i = 0; i < MediumShips1; i++) {
-                fleet1def[X] = 10 * (MediumShipsQ1 + gm1);
-                fleet1atk[X] = 3 * (MediumShipsQ1 + gm1);
+                fleet1def[X] = 10 * (1 + MediumShipsQ1 + gm1);
+                fleet1atk[X] = 3 * (1 + MediumShipsQ1 + gm1);
                 X++;
             }
             for (i = 0; i < LightShips1; i++) {
-                fleet1def[X] = 5 * (LightShipsQ1 + gm1);
-                fleet1atk[X] = 2 * (LightShipsQ1 + gm1);
+                fleet1def[X] = 5 * (1 + LightShipsQ1 + gm1);
+                fleet1atk[X] = 2 * (1 + LightShipsQ1 + gm1);
                 X++;
             }
 
@@ -162,18 +162,18 @@
             fleet2def = [];
             fleet2atk = [];
             for (i = 0; i < HeavyShips2; i++) {
-                fleet2def[X] = 20 * (HeavyShipsQ2 + gm2);
-                fleet2atk[X] = 4 * (HeavyShipsQ2 + gm2);
+                fleet2def[X] = 20 * (1 + HeavyShipsQ2 + gm2);
+                fleet2atk[X] = 4 * (1 + HeavyShipsQ2 + gm2);
                 X++;
             }
             for (i = 0; i < MediumShips2; i++) {
-                fleet2def[X] = 10 * (MediumShipsQ2 + gm2);
-                fleet2atk[X] = 3 * (MediumShipsQ2 + gm2);
+                fleet2def[X] = 10 * (1 + MediumShipsQ2 + gm2);
+                fleet2atk[X] = 3 * (1 + MediumShipsQ2 + gm2);
                 X++;
             }
             for (i = 0; i < LightShips2; i++) {
-                fleet2def[X] = 5 * (LightShipsQ2 + gm2);
-                fleet2atk[X] = 2 * (LightShipsQ2 + gm2);
+                fleet2def[X] = 5 * (1 + LightShipsQ2 + gm2);
+                fleet2atk[X] = 2 * (1 + LightShipsQ2 + gm2);
                 X++;
             }
 
