@@ -196,17 +196,43 @@
                 fleet2defSave[i] = fleet2def[i];
             }
 
+            // prep for retreats
+            fleet1retreats = [];
+            fleet2retreats = [];
+            for (i = 0; i < ships1; i++) {
+                fleet1retreats[i] = 0;
+            }
+            for (i = 0; i < ships2; i++) {
+                fleet2retreats[i] = 0;
+            }
+
             // Battle
             function battle() {
                 for (i = 0; i < ships1; i++) {
                     y = 0;
                     do {
+                        if (fleet1def[i] > 0 && fleet1def[i] / fleet1defSave[i] < 0.35) {
+                            retreatChance = Math.random();
+                            if (retreatChance > 0.6) {
+                                fleet1retreats[i] = fleet1def[i];
+                                fleet1def[i] = 0;
+                                console.log("ship " + i + " side 1 retreats");
+                            }
+                        }
+                        if (fleet2def[y] > 0 && fleet2def[y] / fleet2defSave[y] < 0.35) {
+                            retreatChance = Math.random();
+                            if (retreatChance > 0.6) {
+                                fleet2retreats[y] = fleet2def[y];
+                                fleet2def[y] = 0;
+                                console.log("ship " + y + " side 2 retreats");
+                            }
+                        }
                         if (fleet2def[y] > 0 && fleet1def[i] > 0) {
                             atkmod1 = fleet1def[i] / fleet1defSave[i];
                             atkmod2 = fleet2def[y] / fleet2defSave[y];
                             fleet1def[i] = fleet1def[i] - fleet2atk[y] * atkmod2;
                             fleet2def[y] = fleet2def[y] - fleet1atk[i] * atkmod1;
-                            debugger;
+                            console.log("ship " + i + " side 1 and ship " + y + " side 2 fire on each other")
                         }
                         y++;
                     } while (fleet1def[i] > 0 && y < ships2);
@@ -225,6 +251,12 @@
                 battle();
             } while (HP1OverallNew > HP1Overall * 0.7 && HP2OverallNew > HP2Overall * 0.7);
 
+            for (i = 0; i < ships1; i++) {
+                if (fleet1retreats[i] > 0) fleet1def[i] = fleet1retreats[i];
+            }
+            for (i = 0; i < ships2; i++) {
+                if (fleet2retreats[i] > 0) fleet2def[i] = fleet2retreats[i];
+            }
 
             // Assesing Damages
             X = 0;
